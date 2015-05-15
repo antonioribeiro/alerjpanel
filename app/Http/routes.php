@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Entities\Congressman;
+
+Route::get('/', function ()
+{
+    $congressmen = Congressman::orderBy('name')->get();
+
+    return view('painel.home')->with('congressmen', $congressmen);
 });
