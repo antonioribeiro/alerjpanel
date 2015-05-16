@@ -1,34 +1,72 @@
-var Deputados = React.createClass({
-    getInitialState: function() {
-        return {secondsElapsed: 0};
-    },
+var packeryOptions =
+{
+    isHorizontal: true,
+    itemSelector: '.item',
+};
 
-    loadFromServer: function()
+var PackeryMixin = PackeryMixin();
+
+var Congressmen = React.createClass(
+{
+    getInitialState: function()
     {
-        if (this.state.selected.id)
-        {
-            jQuery.ajax(
-                {
-                    url: this.props.url + this.state.selected.id,
-
-                    dataType: 'json',
-
-                    success: function(data) {
-                        this.setState({data: data.tests});
-                    }.bind(this),
-
-                    error: function(xhr, status, err) {
-                        console.error(this.props.url, status, err.toString());
-                    }.bind(this)
-                });
-        }
+        return {congressmen: []};
     },
 
-    render: function() {
+    componentDidMount: function()
+    {
+        this._loadFromServer();
+    },
+
+    mixins: [PackeryMixin('packeryContainer', packeryOptions)],
+
+    _loadFromServer: function()
+    {
+        jQuery.ajax(
+        {
+            url: 'http://api.alerj.com/api/v1.0/bills/1/votes',
+
+            dataType: 'json',
+
+            success: function(data)
+            {
+                this.setState({congressmen: data});
+            }.bind(this),
+
+            error: function(xhr, status, err)
+            {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
+
+    render: function()
+    {
+        var congressmen = this.state.congressmen.map(function (congressman)
+        {
+            return (
+                <Congressman congressman={congressman} key={congressman.id} />
+            );
+        }, this);
+
         return (
-            <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+            <div ref="packeryContainer">{congressmen}</div>
         );
     }
 });
 
-React.render(<Deputados />, mountNode);
+var Congressman = React.createClass(
+{
+    render: function()
+    {
+        return (
+            <div>
+                <div className="wrapper item vote-yes">
+                    { this.props.congressman.name }
+                </div>
+            </div>
+        );
+    }
+});
+
+React.render(<Congressmen />, document.getElementById('votes'));
