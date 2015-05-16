@@ -12,11 +12,10 @@ body {
     font-family: 'Open Sans';
 }
 
-.container {
+.content {
     height: 100%;
     margin: 20px;
     text-align: center;
-    display: table-cell;
     vertical-align: middle;
 }
 
@@ -25,18 +24,26 @@ body {
     padding: 10px;
     margin: 2px;
     text-align: left;
-    font-weight: 200;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.result {
+    padding: 10px;
+    margin: 2px;
+    text-align: left;
+    font-weight: 500;
     font-size: 1.3em;
 }
 
 .vote-yes {
-    color: #000000;
-    background-color: #0ac246;
+    color: #062f46;
+    background-color: #00ba46;
 }
 
 .vote-no {
-    color: #FFFFFF;
-    background-color: #c20000;
+    color: #00fdfd;
+    background-color: #fd0101;
 }
 
 .vote-absent {

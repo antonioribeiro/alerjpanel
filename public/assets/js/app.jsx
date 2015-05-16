@@ -1,11 +1,3 @@
-var packeryOptions =
-{
-    isHorizontal: true,
-    itemSelector: '.item',
-};
-
-var PackeryMixin = PackeryMixin();
-
 var Congressmen = React.createClass(
 {
     getInitialState: function()
@@ -17,8 +9,6 @@ var Congressmen = React.createClass(
     {
         this._loadFromServer();
     },
-
-    mixins: [PackeryMixin('packeryContainer', packeryOptions)],
 
     _loadFromServer: function()
     {
@@ -38,6 +28,8 @@ var Congressmen = React.createClass(
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
+
+        window.setTimeout(this._loadFromServer, 500);
     },
 
     render: function()
@@ -50,7 +42,7 @@ var Congressmen = React.createClass(
         }, this);
 
         return (
-            <div ref="packeryContainer">{congressmen}</div>
+            <div className="row">{congressmen}</div>
         );
     }
 });
@@ -59,9 +51,22 @@ var Congressman = React.createClass(
 {
     render: function()
     {
+        if (this.props.congressman.vote == true)
+        {
+            vote = 'yes';
+        }
+        else if (this.props.congressman.vote == false)
+        {
+            vote = 'no';
+        }
+        else
+        {
+            vote = 'absent';
+        }
+
         return (
             <div>
-                <div className="wrapper item vote-yes">
+                <div className={"wrapper item col-md-3 vote-" + vote}>
                     { this.props.congressman.name }
                 </div>
             </div>
