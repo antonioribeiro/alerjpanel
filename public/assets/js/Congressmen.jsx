@@ -1,3 +1,5 @@
+var ReactTransitionGroup = React.addons.CSSTransitionGroup;
+
 var Congressmen = React.createClass(
 {
     getInitialState: function()
@@ -7,29 +9,12 @@ var Congressmen = React.createClass(
 
     componentDidMount: function()
     {
-        this._loadFromServer();
+        EventSystem.listen('data.loaded', this._votesLoaded);
     },
 
-    _loadFromServer: function()
+    _votesLoaded: function(data)
     {
-        jQuery.ajax(
-        {
-            url: 'http://api.alerj.com/api/v1.0/bills/1/votes',
-
-            dataType: 'json',
-
-            success: function(data)
-            {
-                this.setState({congressmen: data});
-            }.bind(this),
-
-            error: function(xhr, status, err)
-            {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
-
-        window.setTimeout(this._loadFromServer, 500);
+        this.setState({congressmen: data.votes});
     },
 
     render: function()
@@ -42,7 +27,7 @@ var Congressmen = React.createClass(
         }, this);
 
         return (
-            <div className="row">{congressmen}</div>
+            <div>{congressmen}</div>
         );
     }
 });
@@ -51,7 +36,15 @@ var Congressman = React.createClass(
 {
     render: function()
     {
-        if (this.props.congressman.vote == true)
+        if (this.props.congressman.present == false)
+        {
+            vote = 'absent';
+        }
+        else if (this.props.congressman.vote == null)
+        {
+            vote = 'refrained';
+        }
+        else if (this.props.congressman.vote == true)
         {
             vote = 'yes';
         }
@@ -59,19 +52,18 @@ var Congressman = React.createClass(
         {
             vote = 'no';
         }
-        else
-        {
-            vote = 'absent';
-        }
+
+        className = "box congressman item col-md-3 vote-" + vote;
 
         return (
-            <div>
-                <div className={"wrapper item col-md-3 vote-" + vote}>
+            <ReactTransitionGroup transitionName="example" transitionAppear={true}>
+                <div className={className} key={this.props.congressman.id}>
                     { this.props.congressman.name }
                 </div>
-            </div>
+            </ReactTransitionGroup>
         );
     }
 });
 
 React.render(<Congressmen />, document.getElementById('votes'));
+

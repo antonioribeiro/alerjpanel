@@ -12,43 +12,55 @@ body {
     font-family: 'Open Sans';
 }
 
-.content {
-    height: 100%;
-    margin: 20px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.wrapper {
-    width: 100%;
+.box {
     padding: 10px;
     margin: 2px;
     text-align: left;
-    font-weight: 500;
+    font-weight: 700;
+}
+
+.box-label {
+    font-size: 0.8em;
+}
+
+.party-box {
+    padding: 3px;
+}
+
+.congressman {
     font-size: 1.3em;
 }
 
-.result {
-    padding: 10px;
-    margin: 2px;
-    text-align: left;
-    font-weight: 500;
-    font-size: 1.3em;
+.vote {
+    font-size: 1.9em;
+}
+
+.party {
+    font-size: 0.9em;
 }
 
 .vote-yes {
     color: #062f46;
     background-color: #00ba46;
+    transition: opacity .5s ease-in;
 }
 
 .vote-no {
     color: #00fdfd;
     background-color: #fd0101;
+    transition: opacity .5s ease-in;
+}
+
+.vote-refrained {
+    color: rgba(0, 0, 0, 0.73);
+    background-color: rgb(255, 243, 15);
+    transition: opacity .5s ease-in;
 }
 
 .vote-absent {
     color: #7a7a7a;
     background-color: rgba(25, 24, 22, 0.51);
+    transition: opacity .5s ease-in;
 }
 
 .item {
@@ -62,3 +74,89 @@ body {
 .right {
     text-align: right;
 }
+
+.example-appear {
+    opacity: 0.01;
+    transition: opacity 0.5s ease-in;
+}
+
+.example-appear.example-appear-active {
+    opacity: 1;
+}
+
+.example-enter {
+    opacity: 0.01;
+    transition: opacity 0.5s ease-in;
+}
+
+.example-enter.example-enter-active {
+    opacity: 1;
+}
+
+.example-leave {
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+
+    opacity: 1.0;
+
+    transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
+}
+
+.row-centered {
+    text-align:center;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.padded-1 {
+    padding: 1px;
+}
+
+.padded-2 {
+    padding: 2px;
+}
+
+.padded-3 {
+    padding: 3px;
+}
+
+.padded-4 {
+    padding: 4px;
+}
+
+.padded-5 {
+    padding: 5px;
+}
+
+.padded-6 {
+    padding: 6px;
+}
+
+.padded-7 {
+    padding: 7px;
+}
+
+.padded-8 {
+    padding: 8px;
+}
+
+.padded-9 {
+    padding: 9px;
+}
+
+.padded-10 {
+    padding: 10px;
+}
+
