@@ -36,22 +36,7 @@ var Congressman = React.createClass(
 {
     render: function()
     {
-        if (this.props.congressman.present == false)
-        {
-            vote = 'absent';
-        }
-        else if (this.props.congressman.vote == null)
-        {
-            vote = 'refrained';
-        }
-        else if (this.props.congressman.vote == true)
-        {
-            vote = 'yes';
-        }
-        else if (this.props.congressman.vote == false)
-        {
-            vote = 'no';
-        }
+        vote = __getVote(this.props.congressman);
 
         className = "box congressman item col-md-3 vote-" + vote;
 

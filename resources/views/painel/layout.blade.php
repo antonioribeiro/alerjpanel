@@ -19,9 +19,11 @@
         <script src="https://fb.me/react-with-addons-0.13.3.js"></script>
         <script src="https://facebook.github.io/react/js/JSXTransformer.js"></script>
 
+        <script type="text/javascript" src="assets/js/helpers.js"></script>
         <script type="text/javascript" src="assets/js/EventSystem.js"></script>
-        <script type="text/javascript" src="assets/js/LoadVotesFromServer.js"></script>
         <script type="text/jsx" src="assets/js/Congressmen.jsx"></script>
         <script type="text/jsx" src="assets/js/Parties.jsx"></script>
+        <script type="text/jsx" src="assets/js/VoteSummary.jsx"></script>
+        <script type="text/javascript" src="assets/js/LoadVotesFromServer.js"></script>
     </body>
 </html>
