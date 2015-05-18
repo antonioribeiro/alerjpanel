@@ -63,11 +63,11 @@ var VoteSummary = React.createClass(
                 { this._renderVote('SIM', 'yes', yes) }
                 { this._renderVote('NÃO', 'no', no) }
                 { this._renderVote('ABSTENÇÕES', 'refrained', refrained) }
-                { this._renderVote('TOTAL', 'total', yes+no+refrained) }
+                { this._renderVote('VOTOS', 'total', yes+no+refrained) }
                 { this._renderVote('NÃO VOTARAM', 'present', notvoted) }
                 { this._renderVote('PRESENTES', 'present', present) }
                 { this._renderVote('AUSENTES', 'absent', absent) }
-                { this._renderVote('TOTAL', 'total', present + absent) }
+                { this._renderVote('DEPUTADOS', 'total', present + absent) }
             </div>
         );
     }
