@@ -19,10 +19,30 @@ var Parties = React.createClass(
     {
         var parties = this.state.parties.map(function (party)
         {
+            console.log(party);
+            if (party.yes > party.no && party.yes > party.absent && party.yes > party.restrained)
+            {
+                vote = 'yes';
+            }
+            else if (party.no > party.yes && party.no > party.absent && party.no > party.restrained)
+            {
+                vote = 'no';
+            }
+            else if (party.restrained > party.yes && party.restrained > party.no && party.restrained > party.absent)
+            {
+                vote = 'restrained';
+            }
+            else
+            {
+                vote = 'absent';
+            }
+
+            className = "row vote-"+vote+" text-center";
+
             return (
                 <div className="col-lg-2">
                     <div className="party-box party">
-                        <div className="row vote-yes text-center">
+                        <div className={className}>
                             {party.name}
                         </div>
                     </div>
