@@ -43,6 +43,8 @@ var VoteSummary = React.createClass(
         var no = 0;
         var absent = 0;
         var refrained = 0;
+        var present = 0;
+        var notvoted = 0;
 
         this.state.votes.map(function (vote)
         {
@@ -52,14 +54,20 @@ var VoteSummary = React.createClass(
             no += vote == 'no' ? 1 : 0;
             refrained += vote == 'refrained' ? 1 : 0;
             absent += vote == 'absent' ? 1 : 0;
+            present += vote !== 'absent' ? 1 : 0;
+            notvoted += vote == 'present' ? 1 : 0;
         }, this);
 
         return (
             <div>
                 { this._renderVote('SIM', 'yes', yes) }
-                { this._renderVote('NAO', 'no', no) }
-                { this._renderVote('ABSTENCOES', 'refrained', refrained) }
-                { this._renderVote('AUSENCIAS', 'absent', absent) }
+                { this._renderVote('NÃO', 'no', no) }
+                { this._renderVote('ABSTENÇÕES', 'refrained', refrained) }
+                { this._renderVote('TOTAL', 'total', yes+no+refrained) }
+                { this._renderVote('NÃO VOTARAM', 'present', notvoted) }
+                { this._renderVote('PRESENTES', 'present', present) }
+                { this._renderVote('AUSENTES', 'absent', absent) }
+                { this._renderVote('TOTAL', 'total', present + absent) }
             </div>
         );
     }

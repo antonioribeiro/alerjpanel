@@ -1,20 +1,16 @@
 var __getVote = function(congressman)
 {
-    if (congressman.present == false)
+    if (congressman.present == false && congressman.vote == null)
     {
         vote = 'absent';
     }
-    else if (congressman.vote == null)
+    else if (congressman.present == true && congressman.vote == null)
     {
-        vote = 'refrained';
+        vote = 'present';
     }
-    else if (congressman.vote == true)
+    else
     {
-        vote = 'yes';
-    }
-    else if (congressman.vote == false)
-    {
-        vote = 'no';
+        vote = congressman.vote;
     }
 
     return vote;

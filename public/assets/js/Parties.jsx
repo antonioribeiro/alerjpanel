@@ -19,17 +19,21 @@ var Parties = React.createClass(
     {
         var parties = this.state.parties.map(function (party)
         {
-            if (party.yes > party.no && party.yes > party.absent && party.yes > party.restrained)
+            if (party.yes > party.no && party.yes > party.absent && party.yes > party.refrained && party.yes > party.notvoted)
             {
                 vote = 'yes';
             }
-            else if (party.no > party.yes && party.no > party.absent && party.no > party.restrained)
+            else if (party.no > party.yes && party.no > party.absent && party.no > party.refrained && party.no > party.notvoted)
             {
                 vote = 'no';
             }
-            else if (party.restrained > party.yes && party.restrained > party.no && party.restrained > party.absent)
+            else if (party.refrained > party.yes && party.refrained > party.no && party.refrained > party.absent && party.refrained > party.notvoted)
             {
                 vote = 'refrained';
+            }
+            else if (party.notvoted > party.yes && party.notvoted > party.no && party.notvoted > party.refrained && party.notvoted > party.absent)
+            {
+                vote = 'present';
             }
             else
             {
@@ -37,12 +41,13 @@ var Parties = React.createClass(
             }
 
             className = "row vote-"+vote+" text-center";
+            name = party.name == 'Solidariedade' ? 'SDD' : party.name;
 
             return (
                 <div className="col-lg-2">
                     <div className="party-box party">
-                        <div className={className}>
-                            {party.name}
+                        <div className={ className }>
+                            { name }
                         </div>
                     </div>
                 </div>

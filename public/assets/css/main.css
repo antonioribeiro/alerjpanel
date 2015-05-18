@@ -35,18 +35,26 @@ body {
     font-size: 1.9em;
 }
 
+.clock {
+    font-size: 2.9em;
+}
+
+.bill {
+    font-size: 2em;
+}
+
 .party {
     font-size: 0.9em;
 }
 
 .vote-yes {
-    color: #062f46;
+    color: #000000;
     background-color: #00ba46;
     transition: opacity .5s ease-in;
 }
 
 .vote-no {
-    color: #00fdfd;
+    color: #ffffff;
     background-color: #fd0101;
     transition: opacity .5s ease-in;
 }
@@ -60,6 +68,24 @@ body {
 .vote-absent {
     color: #7a7a7a;
     background-color: rgba(25, 24, 22, 0.51);
+    transition: opacity .5s ease-in;
+}
+
+.vote-present {
+    color: #ffffff;
+    background-color: rgba(0, 20, 253, 0.63);
+    transition: opacity .5s ease-in;
+}
+
+.vote-total {
+    color: #ffffff;
+    background-color: rgba(253, 132, 1, 0.84);
+    transition: opacity .5s ease-in;
+}
+
+.present2 {
+    color: #000000;
+    background-color: rgba(0, 202, 253, 0.69);
     transition: opacity .5s ease-in;
 }
 
