@@ -27,5 +27,9 @@
         <script type="text/jsx" src="assets/js/VoteSummary.jsx"></script>
         <script type="text/jsx" src="assets/js/Clock.jsx"></script>
         <script type="text/javascript" src="assets/js/LoadVotesFromServer.js"></script>
+
+        <script type="text/javascript">
+            SetServerBasedUrl('{{ env('API_MAIN') }}');
+        </script>
     </body>
 </html>

@@ -1,8 +1,10 @@
+var serverBaseUrl = 'http://api.alerj.com/';
+
 var LoadVotesFromServer = function()
 {
     jQuery.ajax(
         {
-            url: 'http://api.alerj.com/api/v1.0/bills/1/votes',
+            url: serverBaseUrl + 'api/v1.0/bills/1/votes',
 
             dataType: 'json',
 
@@ -20,4 +22,10 @@ var LoadVotesFromServer = function()
     window.setTimeout(LoadVotesFromServer, 500);
 };
 
-LoadVotesFromServer();
+var SetServerBasedUrl = function(url)
+{
+    serverBaseUrl = url;
+
+    LoadVotesFromServer();
+};
+
