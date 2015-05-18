@@ -19,7 +19,6 @@ var Parties = React.createClass(
     {
         var parties = this.state.parties.map(function (party)
         {
-            console.log(party);
             if (party.yes > party.no && party.yes > party.absent && party.yes > party.restrained)
             {
                 vote = 'yes';
@@ -30,7 +29,7 @@ var Parties = React.createClass(
             }
             else if (party.restrained > party.yes && party.restrained > party.no && party.restrained > party.absent)
             {
-                vote = 'restrained';
+                vote = 'refrained';
             }
             else
             {
