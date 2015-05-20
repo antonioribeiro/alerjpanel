@@ -10,7 +10,8 @@ var LoadVotesFromServer = function()
 
             success: function(data)
             {
-                EventSystem.fire('data.loaded', { data });
+                var data = { data: data };
+                EventSystem.fire('data.loaded', data);
             }.bind(this),
 
             error: function(xhr, status, err)
