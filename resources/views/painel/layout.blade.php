@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <title>ALERJ - Painel Eletrônico</title>
+        <title>ALERJ - Painel Eletrï¿½nico</title>
 
         <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
 
@@ -18,7 +18,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
         <script src="https://fb.me/react-with-addons-0.13.3.js"></script>
-        <script src="https://facebook.github.io/react/js/JSXTransformer.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
 
         <script type="text/javascript" src="assets/js/helpers.js"></script>
         <script type="text/javascript" src="assets/js/EventSystem.js"></script>
